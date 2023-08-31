@@ -13,7 +13,7 @@ is to provide a technical solution which allows deafblind people to talk with so
 
 ## How to build
 
-1. get the hardware components from the partlist (see hardware folder)
+1. Get all hardware components from the partlist (see hardware folder)
 2. Generate the 3D printing files for an available 3D printer from the .stl files in the 3D folder
 3. Print the components (3 parts of the aktuators are needed 5 times)
 4. Clue the magnets on the magnet holder and place put them in the coil holder so that the magnet holder can move freely up and down in the coil holder
