@@ -16,13 +16,16 @@ is to provide a technical solution which allows deafblind people to talk with so
 1. Get all hardware components from the partlist (see hardware folder)
 2. Generate the 3D printing files for an available 3D printer from the .stl files in the 3D folder
 3. Print the components (3 parts of the aktuators are needed 5 times)
-4. Clue the magnets on the magnet holder and place put them in the coil holder so that the magnet holder can move freely up and down in the coil holder
-5. Clip the bootom of the coils holder on to the coil holder
-6. Wind 500 windings of the cooper wire on to each coil holder so thet there are two 5cm long wires outside to later electrically connect the winding
-7. Remove the isolation half a centimeter from the ends of the wires, test the functionality with the battery and mark the polarity where the magnet moves the magnet holder upwards
-8. Mount the charging electronics, the battery, the actuators, the switches and the microcontroller in the housing
-9. Connect the electronic components and the driver IC acording to the schematic (see hardware folder)
-10. Fix the parts with screws and put the housing together and fix it with the screws
+4. Clue the magnets on the magnet holder and place them in the coil holder so that the magnet holder can move freely up and down in the coil holder
+5. Clip the bootom of the coil holder on to the coil holder
+6. Wind 500 windings of the cooper wire on each coil holder leaving two 5cm long wires outside for electrically connection
+7. Remove the isolation half a centimeter from the ends of the wires (with sandpaper)
+8. Test the functionality of the actuator with the battery and mark the polarity where the magnet moves upwards
+9. Mount the charging electronics, the battery, the actuators, the switches and the microcontroller in the housing
+10. Connect the electronic components and the driver IC acording to the schematic (see hardware folder)
 11. Download the SW on the microcontroller
-12. Test the functionality
+12. Test the functionality: inputs done with the switches on the input side should imediatly be mirrored on the actuators on the output side
+13. Fix all parts with screws and put the housing together, finaly fix it with screws
+
+
     
