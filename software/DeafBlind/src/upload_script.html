@@ -1,0 +1,62 @@
+<table class="fixed" border="0">
+    <col width="1000px" /><col width="500px" />
+    <tr><td>
+        <h2>ESP32 File Server</h2>
+    </td><td>
+        <table border="0">
+            <tr>
+                <td>
+                    <label for="newfile">Upload a file</label>
+                </td>
+                <td colspan="2">
+                    <input id="newfile" type="file" multiple style="width:100%;">
+                </td>
+                <td>
+                    <button id="upload" type="button" onclick="upload()">Upload</button>
+                </td>
+            </tr>
+        </table>
+    </td></tr>
+</table>
+<script>
+function upload() {
+    var upload_path = "/upload/";
+    var fileInput = document.getElementById("newfile").files;
+
+    /* Max size of an individual file. Make sure this
+     * value is same as that set in file_server.c */
+    var MAX_FILE_SIZE = 2000*1024;
+    var MAX_FILE_SIZE_STR = "2MB";
+
+    if (fileInput.length == 0) {
+        alert("No file selected!");
+    } else {
+      document.getElementById("newfile").disabled = true;
+      document.getElementById("upload").disabled = true;
+      for (var n=0;n < fileInput.length; n++) {
+        if (fileInput[n].size > 2000*1024) {
+          alert("File size must be less than 2MB!");
+        } else {
+          var file = fileInput[n];
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4) {
+                if (xhttp.status == 200) {
+                    location.reload();
+                } else if (xhttp.status == 0) {
+                    alert("Server closed the connection abruptly!");
+                    location.reload();
+                } else {
+                    alert(xhttp.status + " Error!\n" + xhttp.responseText);
+                    location.reload();
+                }
+            }
+					}
+        };
+        xhttp.open("POST", upload_path+file.name, true);
+        xhttp.send(file);
+        console.log(file.name);
+      }
+    }
+}
+</script>

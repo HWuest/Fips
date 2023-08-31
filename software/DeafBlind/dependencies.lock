@@ -1,0 +1,75 @@
+dependencies:
+  atanisoft/esp_lcd_touch_xpt2046:
+    component_hash: c9a7ea1362bd282ed5d0b7c1e685c5ea036686c14b05c5232bff04f7a790c229
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/cmake_utilities:
+    component_hash: 32d235c66d22f05ca3b5a3c2bdf273edd273b1e624b144fa8635066be50bae7b
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.4.8
+  espressif/esp_lcd_touch:
+    component_hash: 847284c65f8d5aaa9a801f5b3d3dac0ba0a5a2dc1bb68890989e84dd9c4a9d53
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.4
+  espressif/esp_modem:
+    component_hash: db634499298a3335367039b07838e9fcc1dd44e8c44bb67c2a6d7cc26b6d8ca4
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.1
+  espressif/esp_modem_usb_dte:
+    component_hash: 3ff603371f34831d6b63005a7ca019d36b56c0e5717dbc367ff8bb039705378a
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.1.0~1
+  espressif/esp_websocket_client:
+    component_hash: 5269f2d0ef7ba7085848d298d74e75c9353eab3c9b9a558b762d8b1241ba45f4
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.0
+  espressif/iot_bridge:
+    component_hash: f1f214eb4e37ea3ffd3717b6d7b0641fa820b5ad84b1d2facd7cceecc95d9e39
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.6.0
+  espressif/mdns:
+    component_hash: 46ee81d32fbf850462d8af1e83303389602f6a6a9eddd2a55104cb4c063858ed
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.1.0
+  espressif/mesh_lite:
+    component_hash: 786df63f1d7593f384d00715c7d9ee3f400be6fcda93f76f27ead651c2f4cd79
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.4.0
+  espressif/ssd1306:
+    component_hash: bb9d18fd14ba2b11ca7ce426fc059e3ae7c44e7635e3a62eeae9e44c2ca0db46
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.0.5
+  espressif/usb_host_cdc_acm:
+    component_hash: 0a6ffddb86f8d5557c4214658b955cf1d72f8a785f40fba4d95e2396c27d2c4e
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 2.0.0
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 5.0.1
+manifest_hash: 5685d1c1fcc142c030df8110b6260f8ee7f5bf248db17079739d649331decdea
+target: esp32s2
+version: 1.0.0
