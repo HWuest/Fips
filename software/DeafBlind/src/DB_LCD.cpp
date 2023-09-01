@@ -204,10 +204,10 @@ void DB_LCD::initKlein() {
   			if (c =='#') return; // dont draw special command char
   			if (c =='*') { comMode++; return; } // increase command mode on command char
   			if (comMode == 2) { // don't draw special command chars
-  				comMode = 0;	// no second comand char, continue
+  				comMode = 0;
   				return;
   			}
-  			else comMode = 0;
+  			else comMode = 0; // no second comand char, continue   DHS to be extended to output single command char!!!
   		}
 
   		if (ypos > 2*16) { // clear after 3 lines
@@ -253,12 +253,13 @@ void DB_LCD::initKlein() {
     	    ssd1306_refresh_gram(ssd1306_dev);
       	}
 
-      	if (Controller->iClients != iClients) { // check for changed iClients
-      		iClients = Controller->iClients;
-      		sprintf(s,"%2d",iClients); // layer
-      		ssd1306_draw_string(ssd1306_dev, 32, 0, (uint8_t*)s, 16,1);
-    	    ssd1306_refresh_gram(ssd1306_dev);
-      	}
+// DHS to be updated to mesh_lite
+//      	if (Controller->iClients != iClients) { // check for changed iClients
+//      		iClients = Controller->iClients;
+//      		sprintf(s,"%2d",iClients); // layer
+//      		ssd1306_draw_string(ssd1306_dev, 32, 0, (uint8_t*)s, 16,1);
+//    	    ssd1306_refresh_gram(ssd1306_dev);
+//      	}
   	});
 
   	Controller->inHandlers += LCDInHandler; // register LCD in handler

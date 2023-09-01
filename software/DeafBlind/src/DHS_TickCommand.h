@@ -14,9 +14,10 @@
 #include <string>
 #include "esp_wifi.h"
 
-#define DHS_COMMANDCHAR '*' // command character
-#define DHS_COMMNUM 2		// number of comm char repetitions to sctivate command
-#define DHS_CHARSETCHAR '#' // charset change character
+#define DHS_COMMANDCHAR '*' // 'ch' command character
+#define DHS_CHARSETCHAR '#' // 'sch' charset change character
+
+#define DHS_COMMNUM 2		// number of comm char repetitions to activate command
 
 class DHS_TickCommand {
   public:
