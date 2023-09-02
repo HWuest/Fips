@@ -23,7 +23,7 @@ is to provide a technical solution which allows deafblind people to talk with so
 8. Test the functionality of the actuator with the battery and mark the polarity where the magnet moves upwards
 9. Mount the charging electronics, the battery, the actuators, the switches and the microcontroller in the housing
 10. Connect the electronic components and the driver IC acording to the schematic (see hardware folder)
-11. Download the SW on the microcontroller
+11. Download the SW on the microcontroller -> [Link to description](bin/Readme.md)
 12. Test the functionality: inputs done with the switches on the input side should imediatly be mirrored on the actuators on the output side
 13. Fix all parts with screws and put the housing together, finaly fix it with screws
 
