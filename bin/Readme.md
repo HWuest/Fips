@@ -40,6 +40,27 @@ Der Name des USB Port am Computer heisst u.U. anders als hier hinter der Option 
 --port com4
 ```
 #### Flashen der Dateien für die Webseiten
+Nach dem Flashen des Programms "DeafBlind.bin" kann das Programm mit einem Reset des ESP32 gestartet werden. Dabei erstellt das Programm einen WLAN Access Point mit der IP Adresse 192.168.4.1 und der WLAN ssid DB.
+
+Zuerst muss man das WLAN wechseln, aus dem eigenen WLAN in das WLAN, das der ESP32 aufgespannt hat. Der eigene Computer zeigt unter WLAN Einstellungen die sichtbaren WLAN Netze an. Man deaktiviert das bisherige WLAN und meldet sich bei dem WLAN mit dem Namen DB neu an.
+
+Die Zugangsdaten sind:
+- Password: `   `  
+
+Der Aufruf der initialen Webseite erfolgt in einem beliebigen Webbrowser mit der Adresszeile ```https://192.168.4.1/index.html```.
+Man sieht daqnn folgende Seite: 
+
+![image config](../assets/fips-config.png)
+
+Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
+
+**Liste der Dateien**
+
+
+---
+alt
+---
+
 Um die Dateien für die Webseiten zu laden, verwendet man die `CONFIG` Seite auf der Webseite des Programms.
 
 *Referenz zur Beschreibung wie man auf die Webseite kommmt*
