@@ -1,6 +1,6 @@
 ## Latest ready to use binaries to flash on a ESP32S2 mini microcontroller board
 
-## Flashen der Software (Programmierung des Mikrocontrollers)
+### Flashen der Software (Programmierung des Mikrocontrollers)
 Das Flashen der Software besteht aus mehreren Schritten.
 - Das Flashen des Fips Programms für den ESP32, DeafBlind.bin
 - Das Flashen des bootloaders, bootloader.bin
@@ -16,7 +16,7 @@ Als zweites und drittes mit den Dateien bootloader.bin und partition-table.bin g
 
 Zum Flashen des Fips Programms braucht man ein spezielles Flash Tool der Fa. Espressif. Es ist ein Python Programm und heisst esptool.py.
 Die Installationsanweisung ist unter folgendem Link zu finden
-> https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html#installation
+`https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html#installation`
 
 Am einfachsten ist es, das esptool im gleichen Ordner zu installieren, wie die anderen Dateien, dann braucht man keine expliziten Pfadangaben.
 Wir empfehlen, unser Script zu verwenden oder anzupassen, wenn die Dateien in anderen Ordnern liegen.
@@ -29,13 +29,27 @@ Unter Linux heisst der port /dev/ttyACMx, wobei x wieder eine Zahl ist.
 python3 esptool.py --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
 ```
 Der Name des USB Port am Computer heisst u.U. anders als hier hinter der Option --port angegeben. Unter folgendem Link findet man eine Anleitung.
-### Linux
+
+**Linux**
 ```
 --port /dev/ttyACM0
 ```
-### Windows 
+
+**Windows** 
 ```
 --port com4
 ```
+#### Flashen der Dateien für die Webseiten
+Um die Dateien für die Webseiten zu laden, verwendet man die `CONFIG` Seite auf der Webseite des Programms.
 
+*Referenz zur Beschreibung wie man auf die Webseite kommmt*
 
+![image home](../assets/fips-home.png)
+
+Klicken auf "CONFIG" in der Menuzeile führt zur CONFIG-Seite.
+
+![image config](../assets/fips-config.png)
+
+Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
+
+**Liste der Dateien**
