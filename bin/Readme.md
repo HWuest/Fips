@@ -50,11 +50,22 @@ Die Zugangsdaten sind:
 Der Aufruf der initialen Webseite erfolgt in einem beliebigen Webbrowser mit der Adresszeile ```https://192.168.4.1/index.html```.
 Man sieht daqnn folgende Seite: 
 
-![image config](../assets/fips-config.png)
+![image index](../assets/fips-index.png)
 
 Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
 
 **Liste der Dateien**
+
+#### Konfiguration für das eigene lokale WLAN
+Nach dem man alle o.g. Dateien hochgeladen hat, sollte man den ESP32 erneut resettten, um alle Änderungen wirksam zu machen.
+
+Erneuter Aufruf mit der Adresszeile ```https://192.168.4.1/index.html``` zeigt jetzt eine neue Seite:
+
+![image home](../assets/fips-home.png)
+
+Mit dem Tab `SETUP` wechseln wir zur Setup Seite. In dem Menu xyz setzen wir unsere eigenen lokalten WLAN Einstellungen oder das WLAN, in dem wir uns gerade befinden und das Gerät nutzen wollen.
+
+Die Schaltflächen `Speichern` und `Senden` nacheinander anklicken, um die Änderungen zu übernehmen. Danach ist das Gerät betriebsbereit.
 
 
 ---
