@@ -21,14 +21,11 @@ Die Installationsanweisung ist unter folgendem Link zu finden
 Am einfachsten ist es, das esptool im gleichen Ordner zu installieren, wie die anderen Dateien, dann braucht man keine expliziten Pfadangaben.
 Wir empfehlen, unser Script zu verwenden oder anzupassen, wenn die Dateien in anderen Ordnern liegen.
 
-Wenn man keinen Namen für den USB Port angibt, sucht das Programm selbständig nach einem verbundenen Port.
-Sollte das nicht funktionieren, den port explizit mit der Option --port xyz angeben. Unter Windows heisst der port COMx, wobei x eine Zahl ist.
-Unter Linux heisst der port /dev/ttyACMx, wobei x wieder eine Zahl ist. 
-
 ```
 python3 esptool.py --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
 ```
-Der Name des USB Port am Computer heisst u.U. anders als hier hinter der Option --port angegeben. Unter folgendem Link findet man eine Anleitung.
+
+Das Programm sucht automatisch nach dem richtigen USB Port. Wenn es den nicht findet und eine entsprechende Fehlermeldung ausgibt, kann man den Port explizit als zusätzliche Option `--port xyz` angeben. Unter Windows heisst der port COMx, wobei x eine Zahl ist. Unter Linux heisst der port /dev/ttyACMx, wobei x wieder eine Zahl ist. 
 
 **Linux**
 ```
@@ -72,25 +69,7 @@ Erneuter Aufruf mit der Adresszeile ```https://192.168.4.1/index.html``` zeigt j
 
 ![image home](../assets/fips-home.png)
 
-Mit dem Tab `SETUP` wechseln wir zur Setup Seite. In dem Menu xyz setzen wir unsere eigenen lokalten WLAN Einstellungen oder das WLAN, in dem wir uns gerade befinden und das Gerät nutzen wollen.
+Mit dem Tab `SETUP` wechseln wir zur Setup Seite. In dem Feld `WLAN Credentials` setzen wir unsere eigenen lokalen WLAN Einstellungen oder das WLAN, in dem wir uns gerade befinden und das Gerät nutzen wollen mit `IP-Adresse-des-Routers,WLAN-Passwort` also z.B. `192.168.1.0,a6bH!vK#`.
 
-Die Schaltflächen `Speichern` und `Senden` nacheinander anklicken, um die Änderungen zu übernehmen. Danach ist das Gerät betriebsbereit.
+Die Schaltflächen `Senden` und `Speichern` nacheinander anklicken, um die Änderungen zu übernehmen und abzuspeichern. Danach ist das Gerät betriebsbereit und meldet sich selbständig im lokalen Netzwerk an.
 
-
----
-alt
----
-
-Um die Dateien für die Webseiten zu laden, verwendet man die `CONFIG` Seite auf der Webseite des Programms.
-
-*Referenz zur Beschreibung wie man auf die Webseite kommmt*
-
-![image home](../assets/fips-home.png)
-
-Klicken auf "CONFIG" in der Menuzeile führt zur CONFIG-Seite.
-
-![image config](../assets/fips-config.png)
-
-Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
-
-**Liste der Dateien**
