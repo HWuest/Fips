@@ -49,11 +49,11 @@ Der Aufruf der initialen Webseite erfolgt in einem beliebigen Webbrowser mit der
 
 > Der Webbrowser meldet eine unsichere Seite. Bestätigen, dass man trotzdem mit der Seite verbunden werden möchte.
 > ( Es ist unser eigener Server, also alles in Ordnung ) 
-Man sieht daqnn folgende Seite: 
+Man sieht dann folgende Seite: 
 
 ![image index](../assets/fips-indedx.png)
 
-Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
+Hier kann man man über den `BROWSE` Tab die u.g. Dateien auswählen und durch Anklicken des `UPLOAD` Felds laden. 
 
 **Liste der Dateien**
 - Home.html
