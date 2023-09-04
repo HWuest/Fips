@@ -45,16 +45,25 @@ Nach dem Flashen des Programms "DeafBlind.bin" kann das Programm mit einem Reset
 Zuerst muss man das WLAN wechseln, aus dem eigenen WLAN in das WLAN, das der ESP32 aufgespannt hat. Der eigene Computer zeigt unter WLAN Einstellungen die sichtbaren WLAN Netze an. Man deaktiviert das bisherige WLAN und meldet sich bei dem WLAN mit dem Namen DB neu an.
 
 Die Zugangsdaten sind:
-- Password: `   `  
+- ssid: DB
+- Password: 123456789  
 
 Der Aufruf der initialen Webseite erfolgt in einem beliebigen Webbrowser mit der Adresszeile ```https://192.168.4.1/index.html```.
+
+> Der Webbrowser meldet eine unsichere Seite. Bestätigen, dass man trotzdem mit der Seite verbunden werden möchte.
+> ( Es ist unser eigener Server, also alles in Ordnung ) 
 Man sieht daqnn folgende Seite: 
 
-![image index](../assets/fips-index.png)
+![image index](../assets/fips-indedx.png)
 
 Hier kann man man über den `BROWSE` Tab alle notwendigen Dateien laden. 
 
 **Liste der Dateien**
+- Home.html
+- Setup.html
+- DHSsocket.js
+- Home.js
+- Setup.js
 
 #### Konfiguration für das eigene lokale WLAN
 Nach dem man alle o.g. Dateien hochgeladen hat, sollte man den ESP32 erneut resettten, um alle Änderungen wirksam zu machen.
