@@ -18,12 +18,18 @@ Zum Flashen des Fips Programms braucht man ein spezielles Flash Tool der Fa. Esp
 Die Installationsanweisung ist unter folgendem Link zu finden
 `https://docs.espressif.com/projects/esptool/en/latest/esp32/installation.html#installation`
 
-Am einfachsten ist es, das esptool im gleichen Ordner zu installieren, wie die anderen Dateien, dann braucht man keine expliziten Pfadangaben.
-Wir empfehlen, unser Script zu verwenden oder anzupassen, wenn die Dateien in anderen Ordnern liegen.
+Bei Windows braucht man noch den Python Interpreter, damit sehen die Installationsschritte wie folgt aus.
+
+1. Python installieren. Den Installer findet man unter `https://www.python.org/downloads/windows/`. Bei der Installation das Häkchen für die Anpassung der `PATH` Variablen setzen.
+2. Das "esptool" installieren. Dazu mit `CMD` ein Terminal Fenster unter Windows aufmachen und folgenden Befehl eingeben: ```pip install esptool```.   
+
+(Wir empfehlen, unser Script `fips-esptool` zu verwenden oder anzupassen, wenn die Dateien in anderen Ordnern liegen.)
 
 ```
-python3 esptool.py --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
+esptool --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
 ```
+
+> Unter Linux ist Python standardmässig bereits installiert. Hier muss nur noch das esptool mit dem gleichen Kommando wie oben installiert werden. Eine > mögliche Fehlerquelle ist noch die installierte Python version, sie sollte grösser V3.7 sein. Die installierte Version erhält man mit dem Aufruf von `python --version` in der Kommandozeile. Wenn eine ältere Python Version installiert ist, kann man auf eine aktuelle Version upgraden, es sein denn.man > braucht die ältere Version aus anderen Gründen. Ist das der Fall, gibt es kein Standard Vorgehen.  
 
 Das Programm sucht automatisch nach dem richtigen USB Port. Wenn es den nicht findet und eine entsprechende Fehlermeldung ausgibt, kann man den Port explizit als zusätzliche Option `--port xyz` angeben. Unter Windows heisst der port COMx, wobei x eine Zahl ist. Unter Linux heisst der port /dev/ttyACMx, wobei x wieder eine Zahl ist. 
 
