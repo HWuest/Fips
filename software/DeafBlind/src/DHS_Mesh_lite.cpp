@@ -101,10 +101,10 @@ void ip_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, 
     ip_event_got_ip_t *event = (ip_event_got_ip_t *) event_data;
     ESP_LOGW("DHS","Device IP is: " IPSTR, IP2STR(&event->ip_info.ip));
 
-//    if ( esp_mesh_lite_get_level() == 1 ) { // if root node
+    if ( esp_mesh_lite_get_level() == 1 ) { // if root node
 	  DHS_WebServer::initialise_mdns(); // start mdns server
 	  if (DHS_WebsocketClient::serverConnect) DHS_WebsocketClient::start(); // start websocket client
-//    }
+    }
 }
 
 void ip_event_handler2(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)

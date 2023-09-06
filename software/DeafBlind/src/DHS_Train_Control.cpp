@@ -11,6 +11,7 @@
 #include "freertos/semphr.h"
 
 #include "DHS_Train_Control.h"
+#include "DHS_TickCommand.h"
 
 extern SemaphoreHandle_t xMutex;
 
@@ -51,7 +52,7 @@ void DHS_Train_Control::processHandlers() {
   	  	  		 c = 255;
   	  	  		 handler(&c); // call inHandler
   	  	  		 if (c!=255) { // input character?
-  	  	  			 if (c == '*') { // command char stops train mode
+  	  	  			 if (c == DHS_COMMANDCHAR) { // command char stops train mode
   	  	  				 xSemaphoreGive( xMutex );
   	  	  				 Com->trainMode = 0;
   	  	  				 state = 0;
