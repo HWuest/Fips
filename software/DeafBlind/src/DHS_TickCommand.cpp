@@ -190,7 +190,7 @@ void DHS_TickCommand::processLine(std::string l) {
 	    	outSpeed = Config->read( (char*)"outSpeed", 300);
 	    	DHS_GPIO::stabTime = Config->read( (char*)"stabTime", (int64_t) 70*1000);
 	    	DHS_GPIO::pulseDuration = Config->read( (char*)"pulseDuration", 100);
-	    	DHS_GPIO::tickMode = Config->read( (char*)"tickMode",0);
+	    	DHS_GPIO::tickMode = Config->read( (char*)"tickMode",(uint8_t) 0);
 	    	DHS_LCD::lcdActive = Config->read( (char*)"lcdActive",0);
 	    	DHS_LCDklein::lcdActive = Config->read( (char*)"lcdklein",0);
 	    	DHS_WebsocketClient::serverConnect = Config->read( (char*) "serverConnect",0);

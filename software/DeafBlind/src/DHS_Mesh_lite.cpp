@@ -107,6 +107,8 @@ void ip_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, 
     }
 }
 
+
+
 void ip_event_handler2(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data)
 {
    ESP_LOGE("DHS","Lost IP");
@@ -127,7 +129,7 @@ DHS_Mesh_lite::DHS_Mesh_lite(DHS_1Tick_Control *Cont, DHS_Config *Conf) {
 	ESP_ERROR_CHECK_WITHOUT_ABORT(esp_event_loop_create_default());
 	esp_bridge_create_all_netif();
 
-    esp_log_level_set("*", ESP_LOG_INFO);
+//    esp_log_level_set("*", ESP_LOG_INFO);
     // Station
     wifi_config_t wifi_config;
 

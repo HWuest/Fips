@@ -71,7 +71,7 @@ DHS_GPIO::DHS_GPIO(DHS_1Tick_Control *Cont, DHS_Config *Conf) {
 
     stabTime = Config->read( (char*)"stabTime", (int64_t) 70*1000);
     pulseDuration = Config->read( (char*)"pulseDuration", 100);
-
+    tickMode = Config->read( (char*)"tickMode",(uint8_t)0);
 	previousinput = getIOs(); // get start configuration from input device
     tickTime = 0; // no tick
 

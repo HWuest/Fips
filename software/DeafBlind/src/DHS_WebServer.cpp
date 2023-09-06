@@ -785,6 +785,18 @@ struct DHS_aux2 {
     int fd;                             /*!< Pointer to fd */
 };
 
+esp_err_t wss_open_fd(httpd_handle_t hd, int sockfd)
+{
+    ESP_LOGW("DHS", "New client connected %d", sockfd);
+    return ESP_OK;
+}
+
+void wss_close_fd(httpd_handle_t hd, int sockfd)
+{
+    ESP_LOGW("DHS", "Client disconnected %d", sockfd);
+    close(sockfd);
+}
+
 static esp_err_t websocket_handler(httpd_req_t *req)
 {   struct DHS_aux *r = (DHS_aux*) req->aux; // helper struct to access internal aux element
 	struct DHS_aux2 *sd = (DHS_aux2*) r->sd; // helper struct to access internal socket database element
@@ -795,7 +807,8 @@ static esp_err_t websocket_handler(httpd_req_t *req)
         return ESP_OK;
     }
     if (r->ws_type == HTTPD_WS_TYPE_CLOSE) {
-//    	if (((file_server_data*)req->user_ctx)->Controller->iClients) ((file_server_data*)req->user_ctx)->Controller->iClients--; // DHS to be extended to check if internet client was closed...
+        ESP_LOGW("DHS", "Close, Client disconnected");
+    	//    	if (((file_server_data*)req->user_ctx)->Controller->iClients) ((file_server_data*)req->user_ctx)->Controller->iClients--; // DHS to be extended to check if internet client was closed...
 //        ESP_LOGI("DHS", "Connection %d was closed (%d)",sd->fd,((file_server_data*)req->user_ctx)->Controller->iClients);
         /* Read the rest of the CLOSE frame and response */
          /* Please refer to RFC6455 Section 5.5.1 for more details */
@@ -810,6 +823,7 @@ static esp_err_t websocket_handler(httpd_req_t *req)
          frame.len = 0;
          frame.type = HTTPD_WS_TYPE_CLOSE;
          frame.payload = NULL;
+//         close(sd->fd);
          return httpd_ws_send_frame(req, &frame);
     }
 
@@ -942,6 +956,8 @@ DHS_WebServer::DHS_WebServer(DHS_1Tick_Control *Cont) {
 	/* Function to start the Web- and File server */
     static struct file_server_data *server_data = NULL;
 
+ //   esp_log_level_set("httpd", ESP_LOG_DEBUG);
+
 	Controler = Cont; // set one tick controler
 
     if (server_data) {
@@ -966,6 +982,9 @@ DHS_WebServer::DHS_WebServer(DHS_1Tick_Control *Cont) {
     config.uri_match_fn = httpd_uri_match_wildcard;
     config.lru_purge_enable = true;
     config.ctrl_port = 32769;
+    config.stack_size=8096;
+    config.open_fn = wss_open_fd;
+//    config.close_fn = wss_close_fd;
 //    config.max_open_sockets = 5;
 
     ESP_LOGI("DHS", "Starting HTTP Server on port: '%d'", config.server_port);
@@ -988,7 +1007,9 @@ DHS_WebServer::DHS_WebServer(DHS_1Tick_Control *Cont) {
 
     conf.httpd.uri_match_fn = httpd_uri_match_wildcard;
     conf.httpd.lru_purge_enable = true;
-    conf.httpd.max_open_sockets = 2;
+    conf.httpd.open_fn = wss_open_fd;
+    conf.httpd.close_fn = wss_close_fd;
+//    conf.httpd.max_open_sockets = 5;
 
 
     esp_err_t ret = httpd_ssl_start(&sserver, &conf);
@@ -1005,7 +1026,7 @@ DHS_WebServer::DHS_WebServer(DHS_1Tick_Control *Cont) {
         .handler   = websocket_handler,
         .user_ctx  = server_data,    // Pass server data as context
 		.is_websocket = true,         // Mandatory: set to `true` to handler websocket protocol
-        .handle_ws_control_frames = true
+//        .handle_ws_control_frames = true
     };
     httpd_register_uri_handler(server, &websocket);
     httpd_register_uri_handler(sserver, &websocket);
