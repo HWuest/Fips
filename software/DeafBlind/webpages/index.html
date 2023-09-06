@@ -19,7 +19,7 @@
 		
   </head>
 	
-  <body onload="start()"; onunload="Socket.close()"> <!-- init/exit of page -->
+  <body onload="start()"; onbeforeunload="Socket.close()"> <!-- init/exit of page -->
  
 	<section class="DHStop-nav"> <!-- HMenu top navigation bar -->
 		<input id="DHSmenu-toggle" type="checkbox"> <!-- HMenu Hamburger icon -->
