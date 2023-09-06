@@ -1,0 +1,203 @@
+/* ----------------- DHS Hamburger responsive top navigation ---------------*/
+
+html, body { /* overall page settings */
+  margin: 0;
+ background: rgb(241,241,241);
+ background: linear-gradient(72deg, rgba(251,251,251,1) 0%, rgba(229,224,224,1) 30%, rgba(229,224,224,1) 70%, rgba(255,255,256,1) 100%);
+}
+
+.DHSIcon {
+  height: 30px;
+	padding-right: 5px;
+}
+
+.DHStop-nav { /* top navigation bar as normal menu with horizontal tabs */
+  position: fixed;
+	width: 100%;
+  top: 0;
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+	justify-content: space-between;
+  background-color: #F0F0F0;
+  background: linear-gradient(100deg, rgba(183,185,186,1) 0%, rgba(219,214,214,1) 40%, rgba(219,214,214,1) 60%, rgba(211,211,211,1) 100%);
+  color: #444;
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 35px;
+  padding: 0;
+}
+
+.DHSPageTitle { /* no page title on normal menu */
+	display: none;
+	font-size: 1.8rem;
+}
+
+.DHSListSelected { /* color for selected menu tabs */
+  background: rgb(90,93,91);
+}
+
+.DHSmenu { /* normal flex row popup menu */
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+	color: #fff;
+	opacity: 0.9;
+}
+
+.DHSmenu> li:hover { /* list item hover color */
+  background-color: rgb(180,83,91);
+}
+	
+.DHSmenu > li { /* list item */
+	padding: 0.23rem 1rem;
+  overflow: hidden;
+	z-index: 100;
+}
+
+.DHSmenu-button-container { /* hamburger icon container */
+  display: none;
+  width: 35px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#DHSmenu-toggle { /* menu off */
+  display: none;
+}
+
+.DHSmenu-button, /* css hamburger icon, line middle */
+.DHSmenu-button::before,
+.DHSmenu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 35px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.DHSmenu-button::before { /* css hamburger icon,line top */
+  content: '';
+  margin-top: -8px;
+}
+
+.DHSmenu-button::after { /* css hamburger icon, line botom */
+  content: '';
+  margin-top: 8px;
+}
+
+#DHSmenu-toggle:checked + .DHSmenu-button-container .DHSmenu-button::before { /* Hamburger line animation */
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#DHSmenu-toggle:checked + .DHSmenu-button-container .DHSmenu-button { /* Hamburger clicked color */
+  background: rgba(255, 255, 255, 0);
+}
+
+#DHSmenu-toggle:checked + .DHSmenu-button-container .DHSmenu-button::after { /* Hamburger line animation */
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+@media (max-width: 85em) { /* smaler screen, activate Hamburger menu */
+  .DHSmenu-button-container {
+    display: flex;
+    padding: 17px;
+  }
+	
+  .DHSmenu-button-container:hover {
+	  background: rgb(180,83,91);
+	}
+	
+  .DHSmenu { /* two column slide in menue */
+	  display: grid;
+		grid-template-columns: 1fr 1fr;
+    position: absolute;
+    top: 0;
+    margin-top: 35px;
+    left: 0;
+    width: 100%;
+  }
+
+  #DHSmenu-toggle ~ .DHSmenu li { /* menu slide out effect */
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #DHSmenu-toggle:checked ~ .DHSmenu li { /* menu slide in effect */
+    border: 1px solid #333;
+    height: 1.8rem;
+    padding: 0.0em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .DHSmenu > li { /* list items format */
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: white;
+    background-color: #444;
+		font-size: 1.5rem;
+    font-weight: 400;
+  }
+  .DHSmenu > li:not(:last-child) { /* list delimiter */
+    border-bottom: 1px solid #444;
+  }
+
+  .DHSmenu__item {
+    display: block;
+    padding: 0.2rem;
+    color: #fff;
+    font-size: 2.3rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition-duration: .25s;
+  }
+  .DHSmenu__item:hover {
+    background-color: rgb(180,83,91);
+  }
+	.DHSPageTitle { /* activate page titel for hamburger menu */    
+	  display: block;	
+	}
+}
+
+/* responsive page content main */
+DHSmain { /* responsive content 1 to 4 rows */
+		padding: 2px;
+    padding-top: 35px;
+		text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+		align-items: center;
+    justify-items:center;
+/*		justify-content: space-around;*/
+	  align-content: stretch;
+}
+
+.DHScontent {
+  font-size: 1.3rem;
+  display: grid;
+	grid-template-columns: 1fr 1fr;
+	border: solid;
+	border-width: 2px;
+	padding: 5px;
+	margin: 2px;
+	border-color:
+	rgba(255, 255, 255, 1);
+	border-radius: 5px;
+}
+
+.DHSFirstRow {
+  grid-column-start: 1; 
+	grid-column-end: 3;
+}
+

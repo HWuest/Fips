@@ -1,0 +1,32 @@
+<div class="DHScontent">
+    <div class="DHSFirstRow">Tick-Eingabe </div>
+		<div class="DHSFirstRow"><input type="text" id="s" style="font-size:15px; min-width:13.4em;" onkeyup="mesh_enter(event);" oninput="mesh_send();"  autocapitalize="off" ></div>
+    <div class="DHSFirstRow">
+		  <input type="checkbox" name="Tick-Mode" value="tick" id="check1" checked>
+		  <label for="Tick-Mode" style="font-size:12px;"> 1-Tick </label>
+		  <input type="button" style="font-size:12px; margin:5px;" onclick="var x=document.getElementById('s'); if (x.value.length) Socket.send(x.value); x.value = '';" value="Send" >
+		</div>
+</div>
+<div class="DHScontent"> 
+    <div class="DHSFirstRow">Tick-Ausgabe </div>
+<!--		<div class="DHSFirstRow" style="text-align:left; background: white;">-->
+	    <pre class="DHSFirstRow" id="r" style="text-align:left; background: white; margin: 0px; border: 1px solid black; font-size:15px; min-width:13.8em; max-height:5em; overflow-x:clip; overflow-y:auto;"></pre>
+<!--		</div>-->
+		<div class="DHSFirstRow" id="f" style="text-align:center; font-size:13px;"> ---</div>
+		<div class="DHSFirstRow">
+		  <input type="button" style="font-size:12px; margin:5px;" onclick="var x=document.getElementById('r'); Speak(x.innerHTML);" value="Speak" >
+		  <input type="button" style="font-size:12px; margin:5px;" onclick="document.getElementById('r').innerHTML = ''; lineLength=0;" value="Clear" >
+		</div>
+</div>
+<div class="DHScontent"> 
+		<input class="DHSFirstRow" type="button" style="font-size:15px; min-width:13.8em;" onclick="rec_start()" value="Starte Spracherkennung" >
+		<div class="DHSFirstRow">
+		  <input type="checkbox" name="noCom" value="Com" id="check2" checked>
+		  <label for="noCom" style="font-size:12px;"> no Commands </label>
+	  </div>
+		<div class="DHSFirstRow">
+		  <input type="checkbox" name="Speak" value="Speak" id="check3" checked>
+		  <label for="Speak" style="font-size:12px;"> Speak </label>
+	  </div>
+</div>
+

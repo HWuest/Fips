@@ -1,0 +1,120 @@
+<div class="DHScontent" style="min-width:350px">
+		<div class="DHSFirstRow" style="font-size:20px;">Stabilisierungszeit<br><br></div>
+		<datalist class="DHSFirstRow" id="markers" style="display: flex; flex-direction: column; justify-content: space-between; writing-mode: vertical-lr;">
+      <option value="10" label=" 10"></option>
+      <option value="100" label="100"></option>
+      <option value="200" label="200"></option>
+      <option value="300" label="300"></option>
+      <option value="400" label="400"></option>
+      <option value="500" label="500"></option>
+      <option value="600" label="600"></option>
+    </datalist>
+		<input class="DHSFirstRow" type="range" id="ss" style="font-size:15px;" min="10" max="550" list="markers" onchange = 's.value=value'>
+		<div><input type="number" min=10 max=500 id="s" style="font-size:15px; margin-top:10px; width:4em;" onchange ='ss.value=value'></div>
+		<div>
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('get s');" value="Cancel" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('s '+document.getElementById('s').value);" value="Send" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*ns '+document.getElementById('s').value+'*n*e');" value="An alle" >
+	  </div>
+</div>
+
+<div class="DHScontent" style="min-width:350px">
+		<div class="DHSFirstRow" style="font-size:20px;">Pulsdauer <br><br> </div>
+		<datalist class="DHSFirstRow" id="markers" style="display: flex; flex-direction: column; justify-content: space-between; writing-mode: vertical-lr;">
+      <option value="10" label=" 10"></option>
+      <option value="50" label=" 50"></option>
+      <option value="100" label="100"></option>
+      <option value="150" label="150"></option>
+      <option value="200" label="200"></option>
+      <option value="250" label="250"></option>
+      <option value="300" label="300"></option>
+    </datalist>
+		<input class="DHSFirstRow" type="range" id="ds" style="font-size:15px;" min="10" max="300" list="markers" onchange = 'd.value=value'>
+		<div><input type="number" min=10 max=500 id="d" style="font-size:15px; margin-top:10px; width:4em;" onchange ='ds.value=value'></div>
+		<div>
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('get d');" value="Cancel" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('d '+document.getElementById('d').value);" value="Send" >
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*nd '+document.getElementById('d').value+'*n*e');" value="An alle" >
+	  </div>
+</div>
+
+<div class="DHScontent" style="min-width:350px">
+		<div class="DHSFirstRow" style="font-size:20px;">Ausgabegeschwindigkeit<br><br></div>
+		<datalist class="DHSFirstRow" id="markers" style="display: flex; flex-direction: column; justify-content: space-between; writing-mode: vertical-lr;">
+       <option value="10" label=" 10"></option>
+      <option value="100" label="100"></option>
+      <option value="200" label="200"></option>
+      <option value="300" label="300"></option>
+      <option value="400" label="400"></option>
+      <option value="500" label="500"></option>
+      <option value="600" label="600"></option>
+    </datalist>
+		<input class="DHSFirstRow" type="range" id="xs" style="font-size:15px;" min="10" max="600" list="markers" onchange = 'x.value=value'>
+		<div><input type="number" min=10 max=500 id="x" style="font-size:15px; margin-top:10px; width:4em;" onchange ='xs.value=value'></div>
+		<div>
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('get x');" value="Cancel" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('x '+document.getElementById('x').value);" value="Send" >
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*nx '+document.getElementById('x').value+'*n*e');" value="An alle" >
+		</div>
+</div>
+
+<div class="DHScontent" style="min-width:350px">
+	<div class="DHSFirstRow" style="font-size:20px;">Tick-Mode<br></div>
+	<div class="DHSFirstRow" style="text-align:left;">
+	  <input id="t1" type="checkbox" style="font-size:15px; margin-top:10px;">
+	  <label for="t1">Nur setzen von Fingern auswerten</label>
+	</div>
+	<div class="DHSFirstRow" style="text-align:left;">
+  	<input id="t2" type="checkbox" style="font-size:15px; margin-top:10px;">
+	 	<label for="t1">Wartezeit bei jeder &Auml;nderung r&uuml;cksetzen</label> 
+	</div>
+	<div class="DHSFirstRow" style="font-size:20px;"><br>Display<br></div>
+	<div class="DHSFirstRow" style="text-align:left;">
+	 <fieldset>
+	  <input id="no" type="radio" name="display" style="font-size:15px; margin-top:10px;" checked>
+	  <label for="no">keines</label>
+	  <input id="L" type="radio" name="display" style="font-size:15px; margin-top:10px;">
+	  <label for="L">gross</label>
+	  <input id="l" type="radio" name="display" style="font-size:15px; margin-top:10px;">
+	  <label for="l">klein</label>
+	 </fieldset>
+	</div>
+	<input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="Socket.send('get t l L');" value="Cancel" >
+  <input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="send_t(); send_check('l'); send_check('L');" value="Send" >
+</div>
+
+<div class="DHScontent" style="min-width:350px">
+		<div class="DHSFirstRow" style="font-size:20px;">Mesh ID<br></div>
+		<div><input type="number" min=0 max=255 id="m" style="font-size:15px; margin-top:10px; width:5em;"></div>
+		<div>
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="Socket.send('get m');" value="Cancel" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="Socket.send('m '+document.getElementById('m').value);" value="Send" >
+    </div>
+		<button class="DHSFirstRow" style="font-size:15px; margin-top:10px; min-width:100px" onclick="window.location.href='/reset';"> Ger&auml;t neu starten (Reset)</button>
+		<div class="DHSFirstRow" style="font-size:20px;"><br>Server URL<br></div>
+		<input class="DHSFirstRow" type="text" id="i" style="font-size:15px;">
+		<div class="DHSFirstRow" style="text-align:left;">
+	    <input id="I" type="checkbox" style="font-size:15px; margin-top:10px;">
+	    <label for="I">Aktiviere Server-Verbindung</label>
+	  </div>
+		<input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="Socket.send('get i I');" value="Cancel" >
+	  <input type="button" style="font-size:15px; margin-top:10px; min-width:100px" onclick="Socket.send('i '+document.getElementById('i').value.replace(/ /g,'~')); send_check('I');" value="Send" >
+
+		<div class="DHSFirstRow" style="font-size:20px; margin-top:15px;">WLAN Credentials<br></div>
+		<input class="DHSFirstRow" type="text" id="w" style="font-size:15px;">
+		<div class="DHSFirstRow">
+		    <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('get w');" value="Cancel" >
+	      <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('w '+document.getElementById('w').value.replace(/ /g,'~'));" value="Send" >
+		    <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*nw '+document.getElementById('w').value.replace(/ /g,'~')+'*n*e');" value="An alle" >
+		</div>
+</div>
+
+<div class="DHScontent" style="min-width:350px">
+  <input type="button" style="font-size:20px;" onclick="Socket.send('p p');" value="Speichern" >
+  <input type="button" style="font-size:20px;" onclick="send_all('*np p*n*e');" value="In allen spei." >
+	<div class="DHSFirstRow" style="font-size:20px; margin-top:15px;">Firmware update </div>
+	<div class="DHSFirstRow" style="font-size:15px; margin-top:10px;"> .bin File: </div>
+  <input class="DHSFirstRow" id="newfile" style="font-size:15px;" type="file">
+  <button class="DHSFirstRow" style="font-size:15px; margin-top:10px; min-width:100px" onclick="update()"> Update... </button>
+</div>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+ 	  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="DHSHMenu.css">
+		
+		<script src="DHSSocket.js" charset="UTF-8" ></script> 
+ 		<script src="DHSHMenu.js" charset="UTF-8" ></script>
+				
+		<script>
+
+		  function start() { // initialize main content
+			  HMenu = new DHSHMenu('Home'); // initialize Hamburger menu with startpage Home	
+		    Socket = new DHSSocket(); // initialize new web socket on window.location
+			}
+		</script>
+		
+  </head>
+	
+  <body onload="start()"; onunload="Socket.close()"> <!-- init/exit of page -->
+ 
+	<section class="DHStop-nav"> <!-- HMenu top navigation bar -->
+		<input id="DHSmenu-toggle" type="checkbox"> <!-- HMenu Hamburger icon -->
+    <label class='DHSmenu-button-container' for="DHSmenu-toggle">
+    <div class='DHSmenu-button'></div>
+    </label>
+    <ul class="DHSmenu"> <!-- Hamburger menu item list -->
+      <li id='Home' onclick='HMenu.DHSLoad(this.id,this.id)' class="DHSmenu__item">Home</li> <!-- Load page Home.html into main container and execute Home.js DHSStart(); -->
+      <li id='Setup' onclick='HMenu.DHSLoad(this.id,this.id)' class="DHSmenu__item">Setup</li>
+      <li id='Config' onclick='HMenu.DHSLoad(this.id,this.id)' class="DHSmenu__item">Config</li>
+    </ul>
+    <div id="DHSPageTitle" class="DHSPageTitle">Home</div> <!-- page title in top bar when Hamburger icon active -->
+    <img class="DHSIcon" src="Palme_Yellow.svg" alt="DHS"> <!-- top bar right icon -->
+  </section>
+	
+	<DHSmain id="DHSMain"></DHSmain> <!-- dynamically loaded page content will be put here -->
+	
+ </body>
+</html>
