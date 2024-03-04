@@ -33,7 +33,7 @@ oder optional mit ota - over the air - Programmierung:
 esptool --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
 ```
 
-> Unter Linux ist Python standardmässig bereits installiert. Hier muss nur noch das esptool mit dem gleichen Kommando wie oben installiert werden. Eine > mögliche Fehlerquelle ist noch die installierte Python version, sie sollte grösser V3.7 sein. Die installierte Version erhält man mit dem Aufruf von `python --version` in der Kommandozeile. Wenn eine ältere Python Version installiert ist, kann man auf eine aktuelle Version upgraden, es sein denn.man > braucht die ältere Version aus anderen Gründen. Ist das der Fall, gibt es kein Standard Vorgehen.  
+> Unter Linux ist Python standardmässig bereits installiert. Hier muss nur noch das esptool mit dem gleichen Kommando wie oben installiert werden. Eine > mögliche Fehlerquelle ist noch die installierte Python version, sie sollte grösser V3.7 sein. Die installierte Version erhält man mit dem Aufruf von `python --version` in der Kommandozeile. Wenn eine ältere Python Version installiert ist, kann man auf eine aktuelle Version upgraden, es sein denn.man braucht die ältere Version aus anderen Gründen. Ist das der Fall, gibt es kein Standard Vorgehen.  
 
 Das Programm sucht automatisch nach dem richtigen USB Port. Wenn es den nicht findet und eine entsprechende Fehlermeldung ausgibt, kann man den Port explizit als zusätzliche Option `--port xyz` angeben. Unter Windows heisst der port COMx, wobei x eine Zahl ist. Unter Linux heisst der port /dev/ttyACMx, wobei x wieder eine Zahl ist. 
 
@@ -64,6 +64,12 @@ Man sieht dann folgende Seite:
 ![image index](../assets/fips-indedx.png)
 
 Hier kann man man über den `BROWSE` Tab die u.g. Dateien auswählen und durch Anklicken des `UPLOAD` Felds laden. 
+
+Vorher noch die Dateien für die Webseiten in einen Ordner auf dem eigenen Rechner laden. Die Dateien finden sich auf der Github Seite in folgendem Ordner:
+
+'''
+software/DeafBlind/webpages
+'''
 
 **Liste der Dateien**
 - Home.html
