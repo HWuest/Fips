@@ -8,7 +8,7 @@ Das Flashen der Software besteht aus mehreren Schritten.
 - (optional) Das Flashen von ota_data_inbitial.bin 
 - Das Flashen der Dateien für die Webseiten auf dem ESP32
  
-Zuerst müssen aber die Dateien vom gitghub Server auf den lokalen Computer kopiert werden.
+Zuerst müssen aber die Dateien vom github Server auf den lokalen Computer kopiert werden.
 Dazu erst einen Ordner auf dem lokalen Computer anlegen, in dem alle notwendigen Dateien abgelegt werden sollen. 
 Dann auf dieser Seite die Datei DeafBlind.bin anklicken. Dann oben rechts auf Download klicken und den Ordner auf dem lokalen Computer auswählen.
 Wenn die Datei in den Download Ordner gespeichert wurde, die Datei von hier in den gewünschten Ordner ziehen.
@@ -24,6 +24,10 @@ Bei Windows braucht man noch den Python Interpreter, damit sehen die Installatio
 2. Das "esptool" installieren. Dazu mit `CMD` ein Terminal Fenster unter Windows aufmachen und folgenden Befehl eingeben: ```pip install esptool```.   
 
 (Wir empfehlen, unser Script `fips-esptool` zu verwenden oder anzupassen, wenn die Dateien in anderen Ordnern liegen.)
+```
+esptool --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin
+```
+oder optional mit ota - over the air - Programmierung: 
 
 ```
 esptool --chip esp32s2 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 bootloader.bin 0x10000 DeafBlind.bin 0x8000 partition-table.bin 0xe000 ota_data_initial.bin
