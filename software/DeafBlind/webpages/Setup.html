@@ -20,15 +20,6 @@
 
 <div class="DHScontent" style="min-width:350px">
 		<div class="DHSFirstRow" style="font-size:20px;">Pulsdauer <br><br> </div>
-		<datalist class="DHSFirstRow" id="markers" style="display: flex; flex-direction: column; justify-content: space-between; writing-mode: vertical-lr;">
-      <option value="10" label=" 10"></option>
-      <option value="50" label=" 50"></option>
-      <option value="100" label="100"></option>
-      <option value="150" label="150"></option>
-      <option value="200" label="200"></option>
-      <option value="250" label="250"></option>
-      <option value="300" label="300"></option>
-    </datalist>
 		<input class="DHSFirstRow" type="range" id="ds" style="font-size:15px;" min="10" max="300" list="markers" onchange = 'd.value=value'>
 		<div><input type="number" min=10 max=500 id="d" style="font-size:15px; margin-top:10px; width:4em;" onchange ='ds.value=value'></div>
 		<div>
@@ -37,18 +28,20 @@
 			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*nd '+document.getElementById('d').value+'*n*e');" value="An alle" >
 	  </div>
 </div>
+		
+<div class="DHScontent" style="min-width:350px">
+		<div class="DHSFirstRow" style="font-size:20px;">Sequencedauer <br><br> </div>
+		<input class="DHSFirstRow" type="range" id="as" style="font-size:15px;" min="0" max="300" list="markers" onchange = 'a.value=value'>
+		<div><input type="number" min=00 max=500 id="a" style="font-size:15px; margin-top:10px; width:4em;" onchange ='as.value=value'></div>
+		<div>
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('get a');" value="Cancel" >
+		  <input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="Socket.send('a '+document.getElementById('a').value);" value="Send" >
+			<input type="button" style="font-size:15px; margin-top:10px; min-width:55px" onclick="send_all('*na '+document.getElementById('a').value+'*n*e');" value="An alle" >
+	  </div>
+</div>
 
 <div class="DHScontent" style="min-width:350px">
 		<div class="DHSFirstRow" style="font-size:20px;">Ausgabegeschwindigkeit<br><br></div>
-		<datalist class="DHSFirstRow" id="markers" style="display: flex; flex-direction: column; justify-content: space-between; writing-mode: vertical-lr;">
-       <option value="10" label=" 10"></option>
-      <option value="100" label="100"></option>
-      <option value="200" label="200"></option>
-      <option value="300" label="300"></option>
-      <option value="400" label="400"></option>
-      <option value="500" label="500"></option>
-      <option value="600" label="600"></option>
-    </datalist>
 		<input class="DHSFirstRow" type="range" id="xs" style="font-size:15px;" min="10" max="600" list="markers" onchange = 'x.value=value'>
 		<div><input type="number" min=10 max=500 id="x" style="font-size:15px; margin-top:10px; width:4em;" onchange ='xs.value=value'></div>
 		<div>

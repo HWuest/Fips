@@ -1,6 +1,7 @@
 function DHSStart() {
 	Socket.setCallback("s",get_slider,"s");
 	Socket.setCallback("d",get_slider,"d");
+	Socket.setCallback("a",get_slider,"a");
 	Socket.setCallback("x",get_slider,"x");
 	Socket.setCallback("m",get_data,"m");
 //	Socket.setCallback("M",get_data,"M");
@@ -10,7 +11,7 @@ function DHSStart() {
 	Socket.setCallback("i",get_w,"i");
 	Socket.setCallback("I",get_check,"I");
 	Socket.setCallback("w",get_w,"w");
-	Socket.send("get s d x I i t l L m"); // get current field data (+" " to have 20 chars, 19 chars used for mac compare, to be changed)
+	Socket.send("get s d x I i t l L m a"); // get current field data ( !=19 chars, used for mac compare, to be changed)
 	Socket.send("get w");
 }
 
