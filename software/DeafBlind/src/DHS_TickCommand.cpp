@@ -165,10 +165,15 @@ void DHS_TickCommand::processLine(std::string l) {
 	    	ESP_LOGW("DHS","stabTime: %d ms", pos);
 	      break;
 	    case 'd':
-
 	    	pos = atoi((char*)&l[2]);
 	    	if (pos >= portTICK_PERIOD_MS) DHS_GPIO::pulseDuration = pos;
 	    	ESP_LOGW("DHS","PulseDuration: %d ms", pos);
+	      break;
+	    case 'a':
+	    	pos = atoi((char*)&l[2]);
+	    	if (pos >= portTICK_PERIOD_MS) DHS_GPIO::pulseSequence = pos;
+	    	else DHS_GPIO::pulseSequence = 0;
+	    	ESP_LOGW("DHS","PulseSequence: %d ms", pos);
 	      break;
 
 	    case 'x':
@@ -190,6 +195,7 @@ void DHS_TickCommand::processLine(std::string l) {
 	    	outSpeed = Config->read( (char*)"outSpeed", 300);
 	    	DHS_GPIO::stabTime = Config->read( (char*)"stabTime", (int64_t) 70*1000);
 	    	DHS_GPIO::pulseDuration = Config->read( (char*)"pulseDuration", 100);
+	        DHS_GPIO::pulseSequence = Config->read( (char*)"pulseSequence", 50);
 	    	DHS_GPIO::tickMode = Config->read( (char*)"tickMode",(uint8_t) 0);
 	    	DHS_LCD::lcdActive = Config->read( (char*)"lcdActive",0);
 	    	DHS_LCDklein::lcdActive = Config->read( (char*)"lcdklein",0);
@@ -213,6 +219,7 @@ void DHS_TickCommand::processLine(std::string l) {
 	    	Config->write( (char*)"outSpeed", outSpeed);
 	        Config->write( (char*)"stabTime", DHS_GPIO::stabTime);
 	        Config->write( (char*)"pulseDuration", DHS_GPIO::pulseDuration);
+	        Config->write( (char*)"pulseSequence", DHS_GPIO::pulseSequence);
 	        Config->write( (char*)"tickMode", DHS_GPIO::tickMode);
 	        Config->write( (char*)"lcd", DHS_LCD::lcdActive);
 	        Config->write( (char*)"lcdklein", DHS_LCDklein::lcdActive);

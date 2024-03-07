@@ -24,7 +24,7 @@
 #ifndef SRC_DB_LCD_H_
 #define SRC_DB_LCD_H_
 
-#define DHS_HEADLINE "DeafBlind FIPS 2.12" // Header-Text in display, should contain version information (less than 20 chars)
+#define DHS_HEADLINE "DeafBlind FIPS 2.13" // Header-Text in display, should contain version information (less than 20 chars)
 
 #include "DHS_1Tick_Control.h"
 #include "DHS_Config.h"

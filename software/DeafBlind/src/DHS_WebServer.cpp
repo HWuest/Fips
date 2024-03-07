@@ -717,6 +717,9 @@ bool DHS_WebServer::process(char* payload) {
 	        case 'd': sprintf(tmp,"d %d",DHS_GPIO::pulseDuration);
 	        		  strcat(s,tmp);
 	                  break;
+	        case 'a': sprintf(tmp,"a %d",DHS_GPIO::pulseSequence);
+	        		  strcat(s,tmp);
+	                  break;
 	        case 't': sprintf(tmp,"t %d",DHS_GPIO::tickMode);
 	        		  strcat(s,tmp);
 	                  break;

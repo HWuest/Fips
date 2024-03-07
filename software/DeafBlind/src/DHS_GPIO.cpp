@@ -26,6 +26,8 @@ TaskHandle_t GPIOoffTaskHandle = NULL;
 
 int64_t DHS_GPIO::stabTime;
 int DHS_GPIO::pulseDuration;
+int DHS_GPIO::pulseSequence;
+
 uint8_t  DHS_GPIO::IN[5] = {6, 7, 8, 9, 10};   // in GPIO Ports
 uint8_t  DHS_GPIO::OUT[5] ={1, 2, 3, 4, 5};
 uint8_t DHS_GPIO::previousinput;
@@ -71,6 +73,7 @@ DHS_GPIO::DHS_GPIO(DHS_1Tick_Control *Cont, DHS_Config *Conf) {
 
     stabTime = Config->read( (char*)"stabTime", (int64_t) 70*1000);
     pulseDuration = Config->read( (char*)"pulseDuration", 100);
+    pulseSequence = Config->read( (char*)"pulseSequence", 50);
     tickMode = Config->read( (char*)"tickMode",(uint8_t)0);
 	previousinput = getIOs(); // get start configuration from input device
     tickTime = 0; // no tick
@@ -84,7 +87,10 @@ DHS_GPIO::DHS_GPIO(DHS_1Tick_Control *Cont, DHS_Config *Conf) {
 
 		gpio_set_level((gpio_num_t)CONFIG_BLINK_GPIO, 1);  // swith LED
 
-		for (uint8_t i=0; i<5; i++) gpio_set_level((gpio_num_t) OUT[i], u & (1<<i));  // set tick actuators
+		for (uint8_t i=0; i<5; i++) {
+			gpio_set_level((gpio_num_t) OUT[i], u & (1<<i));  // set tick actuators
+			if ((u & (1<<i)) && (pulseSequence > 0)) vTaskDelay(pulseSequence / portTICK_PERIOD_MS); // wait pulseSequence time for seriell activation of ticks
+		}
 
 		xTaskCreate(GPIOoffTask, "GPIOoffTask", 1000, this, 2, &GPIOoffTaskHandle); // could be optimized with xTaskGenericNotify(...) / xTaskNotifyWaitIndexed(...)
 	});

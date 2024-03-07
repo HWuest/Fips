@@ -16,12 +16,13 @@
 
 class DHS_GPIO {
   public:
-    static uint8_t  IN[5];   // in GPIO Ports
+    static uint8_t  IN[5];     // in GPIO Ports
     static uint8_t  OUT[5];    // out GPIO Ports
-    static int64_t stabTime;     	     // tick input stabilization time in µs
-    static int pulseDuration; // duration of output tick pulses
+    static int64_t stabTime;   // tick input stabilization time in µs
+    static int pulseDuration;  // duration of output tick pulses
+    static int pulseSequence;  // delay between seuence of tick activations
     static uint8_t previousinput; // previous input state
-    static uint8_t tickMode; // select tickMode Bit0 up/down or down only delay, Bit1 time at start or time at every change (slower)
+    static uint8_t tickMode;   // select tickMode Bit0 up/down or down only delay, Bit1 time at start or time at every change (slower)
 
     int inHandlerId;
     int outHandlerId;
