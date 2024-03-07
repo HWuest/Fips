@@ -32,7 +32,7 @@ void DHSStartup(void *arg) // report startup ready to local deafblind output
 		vTaskDelay(1000 / portTICK_PERIOD_MS); // wait 1s
 		ESP_LOGW("DHS","Waiting for connection... %d", 60 - i);
 
-		if ( (l = esp_mesh_lite_get_level()) == 1)	break;
+		if ( (l = esp_mesh_lite_get_level()) )	break;
 
 	    GPIO->ledOn();
 //		GPIO->setIO(i, 1); // report start process to deafblind tick output
@@ -47,11 +47,11 @@ void DHSStartup(void *arg) // report startup ready to local deafblind output
 			ESP_LOGW("DHS","Root node with Rooter connection");
 		}
 		else        ESP_LOGW("DHS","Child node Level %d", l);
-		vTaskDelay(200 / portTICK_PERIOD_MS); // wait 200 ms
+//		vTaskDelay(200 / portTICK_PERIOD_MS); // wait 200 ms
 
 		for (i = 0; i < l; i++) { // report level to deafblind tick output
 			GPIO->setIO(i, 1);
-			vTaskDelay(200 / portTICK_PERIOD_MS); // wait 100 ms
+			vTaskDelay(200 / portTICK_PERIOD_MS); // wait 200 ms
 			GPIO->setIO(i, 0);
 		}
 	} else {
@@ -59,6 +59,7 @@ void DHSStartup(void *arg) // report startup ready to local deafblind output
 		esp_mesh_lite_set_allowed_level(1); // enable rooterless network connection
 //		esp_wifi_set_mode(WIFI_MODE_AP);
 	}
+
 	ESP_LOGW("DHS","Ready and running...");
 	vTaskDelete(NULL);
 }
@@ -88,7 +89,7 @@ extern "C" void app_main(void)
 
     GPIO.ledOff();								// signal initialization finished by Onboard Led off
 
-    xTaskCreate(DHSStartup, "DHSStartupTask", 3000, &GPIO, uxTaskPriorityGet(NULL), &DHSStartupTaskHandle); // report start ready after some delay to allow WiFi connections
+    xTaskCreate(DHSStartup, "DHSStartupTask", 3500, &GPIO, uxTaskPriorityGet(NULL), &DHSStartupTaskHandle); // report start ready after some delay to allow WiFi connections
 
 //    uint32_t count = 0;
     while (1) { 								// endless processing loop
