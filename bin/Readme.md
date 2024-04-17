@@ -2,7 +2,7 @@
 - DeafBlind.bin
 - bootloader.bin
 - partition-table.bin
-- (optional) ota_data_inbitial.bin 
+- (optional) ota_data_initial.bin 
 
 ## Beschreibung für das Flashen der Software (Programmierung des Mikrocontrollers)
 Das Flashen der Software besteht aus mehreren Schritten.
@@ -76,15 +76,25 @@ software/DeafBlind/webpages
 
 **Liste der Dateien**
 - Home.html
-- Setup.html
-- DHSsocket.js
 - Home.js
+- Setup.html
 - Setup.js
+- Config.js
+- DHSHMenu.css
+- DHSHMenu.js
+- DHSsocket.js
+- ILGH16XB.FNT
+- ILGH24XB.FNT
+- ILGH32XB.FNT
+- LATIN32B.FNT
+- index.html
+
+Die Datei index.html als letztes laden, danach ändert sich die Webseite.
 
 #### Konfiguration für das eigene lokale WLAN
 Nach dem man alle o.g. Dateien hochgeladen hat, sollte man den ESP32 erneut resettten, um alle Änderungen wirksam zu machen.
 
-Erneuter Aufruf mit der Adresszeile ```https://192.168.4.1/index.html``` zeigt jetzt eine neue Seite:
+Erneuter Aufruf mit der Adresszeile ```http://192.168.4.1``` zeigt jetzt eine neue Seite:
 
 ![image home](../assets/fips-home.png)
 
